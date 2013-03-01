@@ -17,3 +17,4 @@
 # Some custom mixins
 /bin
 .env
+/config/database.yml
