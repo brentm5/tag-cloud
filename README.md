@@ -8,27 +8,22 @@ Project Setup
 
 Get the code
 
-  git clone git@github.com:bigbam505/tag-cloud.git
+    git clone git@github.com:bigbam505/tag-cloud.git
 
 Set up the projects dependencies
 
-  cd tag-cloud
-  bundle --binstubs
-  rake dev:setup
+    cd tag-cloud
+    bundle --binstubs
+    rake dev:setup
 
 Add a remote heroku branch using
 
-  git remote add heroku git@heroku.com:{app-name}.git
-
-Use [Heroku config](https://github.com/ddollar/heroku-config) to get 'ENV'
-variables.
+    git remote add heroku git@heroku.com:{app-name}.git
 
 User [Foreman](https://github.com/ddollar/foreman) to run the app locally
 
-  foreman start
+    foreman start
 
-It uses your '.env' fiel and 'Procfile' to run processes just like Heroku's
+It uses your '.env' field and 'Procfile' to run processes just like Heroku's
 Ceder Stack.
-
-
 
