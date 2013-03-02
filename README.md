@@ -19,9 +19,13 @@ Set up the projects dependencies
     bundle --binstubs
     rake dev:setup
 
-Add a remote heroku branch using
+This application is designed to be hosted on heroku to deploy the application to heroku follow the steps below
 
-    git remote add heroku git@heroku.com:{app-name}.git
+    heroku create {app-name} --remote heroku
+    git push heroku master
+
+Development
+-----------
 
 User [Foreman](https://github.com/ddollar/foreman) to run the app locally
 
