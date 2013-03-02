@@ -12,6 +12,7 @@ gem 'coveralls', require: false
 gem 'thin'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'bootstrap-sass', '~> 2.3.0.1'
+gem 'simple_form', '~> 2.1.0'
 gem 'jquery-rails'
 gem 'strong_parameters'
 
