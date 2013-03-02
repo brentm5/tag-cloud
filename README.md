@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/bigbam505/tag-cloud.png?branch=master)](https://travis-ci.org/bigbam505/tagcloud)
 [![Code Climate](https://codeclimate.com/github/bigbam505/tag-cloud.png)](https://codeclimate.com/github/bigbam505/tag-cloud)
+[![Coverage Status](https://coveralls.io/repos/bigbam505/tag-cloud/badge.png?branch=master)](https://coveralls.io/r/bigbam505/tag-cloud)
 Tag Cloud
 =========
 
