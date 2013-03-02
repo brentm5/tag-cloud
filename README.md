@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bigbam505/tag-cloud.png?branch=master)](https://travis-ci.org/bigbam505/tagcloud)
+
 Tag Cloud
 =========
 

@@ -1,0 +1,5 @@
+test: &test
+  adapter: postgresql
+  database: tag_cloud_test
+  pool: 5
+  timeout: 5000
