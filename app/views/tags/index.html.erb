@@ -1,0 +1,20 @@
+<h2>Tags</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.id %></td>
+        <td><%= tag.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="form-actions">
+  <%= link_to 'Add Tag', new_tag_path, class: 'btn btn-primary' %>
+</div>
