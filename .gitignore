@@ -9,12 +9,17 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/config/database.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+coverage/*
+public/system
+.DS_Store
+*.swp
+vendor/bundler_gems
 
 # Some custom mixins
 /bin
 .env
-/config/database.yml

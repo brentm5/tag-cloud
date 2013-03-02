@@ -8,6 +8,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'coveralls', require: false
 gem 'thin'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'jquery-rails'
