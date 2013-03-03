@@ -11,15 +11,10 @@ class GithubAuthorizer
   end
 
   def self.AuthorizeUser(user)
-    if Rails.env.test?
-      return true
-    end
     if ENV['GITHUB_ORGANIZATION']
       organizations = GithubAuthorizer.GetOrganizations(user)
       organizations.each do |organization|
-        puts organization 
         if organization['login'] == ENV['GITHUB_ORGANIZATION']
-          puts organization
           return true
         end
       end

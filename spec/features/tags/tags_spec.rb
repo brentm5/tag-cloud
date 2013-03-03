@@ -14,6 +14,11 @@ feature 'Tags' do
     navigate_to_tags_index
     verify_tags_are_listed_in_table tags
   end
+
+  scenario 'can only be edited from logged in users' do
+    navigate_to_tags_index
+    verify_user_does_not_have_access
+  end
 end
 
 def navigate_to_tags_index
