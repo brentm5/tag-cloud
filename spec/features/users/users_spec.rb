@@ -11,6 +11,11 @@ feature 'A user' do
     verify_user_had_invalid_credentials
   end
 
+  scenario 'needs to be authorized to login' do
+    login_unauthorized_user
+    verify_login_failed
+  end
+
   scenario 'should be able to logout' do
     login_user_via_github
     visit root_url

@@ -17,6 +17,11 @@ feature 'A mapped Value' do
     verify_current_page_is_add_form
     verify_page_has_error
   end
+
+  scenario 'can only be edited from logged in users' do
+    navigate_to_add_value
+    verify_user_does_not_have_access
+  end
 end
 
 def create_tag
