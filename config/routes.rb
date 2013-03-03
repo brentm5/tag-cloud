@@ -8,4 +8,8 @@ TagCloud::Application.routes.draw do
   resources :tags, only: [:index, :new, :create]
   resources :mapped_values, only: [:new, :create]
   resources :user_sessions, only: [:index, :create]
+
+  namespace :api do
+    resources :random_mapped_value, only: [:index]
+  end
 end

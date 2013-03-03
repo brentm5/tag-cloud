@@ -1,4 +1,6 @@
 ENV["RAILS_ENV"] ||= 'test'
+require 'dotenv'
+Dotenv.load '.env.test'
 
 require 'coveralls'
 Coveralls.wear!('rails')
