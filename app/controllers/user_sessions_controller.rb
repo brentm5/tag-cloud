@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
 
   def create
     user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
-    if user
+    if GithubAuthorizer.AuthorizeUser user
       setup_session user
     else
       teardown_session
@@ -30,7 +30,7 @@ class UserSessionsController < ApplicationController
 
   def setup_session(user)
     session[:user_id] = user.id
-    flash[:notice] = "Successfully logged in #{user.email}"
+    flash[:notice] = "Successfully logged in #{user.username}"
   end
 
   def teardown_session

@@ -1,7 +1,7 @@
-def login_user_via_github(email = 'e@mail.com')
+def login_user_via_github(username = 'username')
   set_oauth_test_mode
-  create(:user, email: email)
-  OmniAuth.config.add_mock(:github, {uid: email })
+  create(:user, email: username)
+  OmniAuth.config.add_mock(:github, {info: { nickname: username} })
   perform_login
 end
 
