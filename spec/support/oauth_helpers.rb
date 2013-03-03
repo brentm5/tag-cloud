@@ -9,13 +9,13 @@ end
 def login_unauthorized_user(username = 'username')
   set_oauth_test_mode
   create(:user, email: username)
+  set_github_organization_check 'goodtimesftw'
   OmniAuth.config.add_mock(:github, {info: { nickname: username} })
   perform_login
 end
 
 def login_user_with_invalid_credentials
   set_oauth_test_mode
-  set_github_organization_check 'goodtimesftw'
   OmniAuth.config.mock_auth[:github] = :invalid_credentials
   perform_login
 end
