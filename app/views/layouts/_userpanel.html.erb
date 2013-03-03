@@ -1,0 +1,16 @@
+<ul class="nav pull-right">
+  <% if current_user %>
+    <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.email %><b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Log out', '/logout' %></li>
+    </ul>
+    </li>
+  <% else %>
+    <% if Rails.env.development? %>
+      <li><%= link_to 'Login via Developer', '/auth/developer' %></li>
+    <% else %>
+      <li><%= link_to 'Login via Github', '/auth/github' %></li>
+    <% end%>
+  <% end %>
+</ul>

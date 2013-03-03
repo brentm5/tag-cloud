@@ -7,4 +7,9 @@ FactoryGirl.define do
     value { |n| "Here is my Value #{n}" }
     tag
   end
+
+  factory :user do
+    name 'Bob'
+    email { |n| "email-#{n}@example.com" }
+  end
 end

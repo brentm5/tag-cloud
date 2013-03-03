@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_filter :authorize_user
+
   def index
     @tags = Tag.limit(100).all
   end

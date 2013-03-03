@@ -2,12 +2,14 @@ require 'spec_helper'
 
 feature 'Tags' do
   scenario 'should be able to be created' do
+    login_user_via_github
     navigate_to_tags_index
     add_a_tag
     verify_tag_was_added
   end
 
   scenario 'should be able to be seen in a list view' do
+    login_user_via_github
     tags = create_list(:tag, 3)
     navigate_to_tags_index
     verify_tags_are_listed_in_table tags

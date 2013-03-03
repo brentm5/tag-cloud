@@ -1,4 +1,5 @@
 class MappedValuesController < ApplicationController
+  before_filter :authorize_user
   def new
     @mapped_value = MappedValue.new
   end

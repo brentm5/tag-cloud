@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature 'A mapped Value' do
   scenario 'should be able to be created' do
+    login_user_via_github
     create_tag
     navigate_to_add_value
     add_a_mapped_value
@@ -10,6 +11,7 @@ feature 'A mapped Value' do
   end
 
   scenario 'should validate input' do
+    login_user_via_github
     navigate_to_add_value
     add_an_incomplete_mapped_value
     verify_current_page_is_add_form
