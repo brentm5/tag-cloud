@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303002704) do
+ActiveRecord::Schema.define(:version => 20130303062712) do
 
   create_table "mapped_values", :force => true do |t|
     t.text     "value"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20130303002704) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "uid"
+    t.string   "username"
   end
 
 end

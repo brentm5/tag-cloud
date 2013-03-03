@@ -2,8 +2,8 @@ require 'spec_helper'
 
 feature 'A user' do
   scenario 'should be able to login via a github oauth endpoint' do
-    login_user_via_github('e@mail.com')
-    verify_user_is_logged_in('e@mail.com')
+    login_user_via_github('username')
+    verify_user_is_logged_in('username')
   end
 
   scenario 'should not be able to login if they are invalid' do
@@ -20,8 +20,8 @@ feature 'A user' do
   end
 end
 
-def verify_user_is_logged_in(email)
-  page.should have_content "Successfully logged in #{email}"
+def verify_user_is_logged_in(username)
+  page.should have_content "Successfully logged in #{username}"
 end
 
 def verify_user_had_invalid_credentials
