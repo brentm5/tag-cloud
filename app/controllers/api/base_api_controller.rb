@@ -3,8 +3,16 @@ class Api::BaseApiController < ActionController::Base
 
   private
   def authenticate_user
-    unless params[:token] == ENV['API_TOKEN']
+    if api_token_blank || invalid_api_token
       render json: { error: 'Token is invalid' }, status: 401
     end
+  end
+
+  def api_token_blank
+    ENV['API_TOKEN'] == nil || ENV['API_TOKEN'] == ''
+  end
+
+  def invalid_api_token 
+    request.params[:token] != ENV['API_TOKEN']
   end
 end
