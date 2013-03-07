@@ -1,0 +1,18 @@
+<h2><%= @tag.name %></h2>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tag.mapped_values.each_with_index do |mapped_value, i| %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= mapped_value.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

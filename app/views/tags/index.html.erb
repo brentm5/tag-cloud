@@ -10,7 +10,7 @@
       <tr>
         <td>
           <span class="badge badge-info"><%= tag.mapped_values.count %></span>
-          <%= tag.name %>
+          <%= link_to tag.name, tag_path(tag) %>
         </td>
       </tr>
     <% end %>
