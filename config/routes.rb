@@ -5,7 +5,7 @@ TagCloud::Application.routes.draw do
   match '/auth/failure', to: 'user_sessions#error'
   match '/logout', to: 'user_sessions#logout'
 
-  resources :tags, only: [:index, :new, :create]
+  resources :tags, only: [:index, :new, :create, :show]
   resources :mapped_values, only: [:new, :create]
   resources :user_sessions, only: [:index, :create]
 
