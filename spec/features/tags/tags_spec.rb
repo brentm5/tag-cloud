@@ -8,17 +8,26 @@ feature 'Tags' do
     verify_tag_was_added
   end
 
-  scenario 'should be able to be seen in a list view' do
+  scenario 'can be shown in a list' do
     login_user_via_github
-    tags = create_list(:tag, 3)
+    tags = create_tags_with_mapped_values(3)
     navigate_to_tags_index
-    verify_tags_are_listed_in_table tags
+    verify_tags_are_listed_in_table(tags)
   end
 
   scenario 'can only be edited from logged in users' do
     navigate_to_tags_index
     verify_user_does_not_have_access
   end
+end
+
+def create_tags_with_mapped_values(tag_count = 2)
+  tags = create_list(:tag, tag_count)
+  tags.each_with_index do |tag, i|
+    create_list(:mapped_value, i, tag: tags[0])
+  end
+
+  tags
 end
 
 def navigate_to_tags_index
@@ -29,7 +38,7 @@ end
 def verify_tags_are_listed_in_table(tags)
   within 'table.table' do
     tags.each do |tag|
-      page.should have_content tag.name
+      page.find('tr', text: tag.name).should have_content tag.mapped_values.count
     end
   end
 end

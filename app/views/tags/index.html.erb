@@ -2,15 +2,16 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>#</th>
       <th>Name</th>
     </tr>
   </thead>
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
-        <td><%= tag.id %></td>
-        <td><%= tag.name %></td>
+        <td>
+          <span class="badge badge-info"><%= tag.mapped_values.count %></span>
+          <%= tag.name %>
+        </td>
       </tr>
     <% end %>
   </tbody>
