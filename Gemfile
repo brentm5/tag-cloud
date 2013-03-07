@@ -20,6 +20,7 @@ gem 'strong_parameters'
 
 group :development do
   gem 'foreman'
+  gem 'better_errors'
 end
 
 group :development, :test do
