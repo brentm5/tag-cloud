@@ -6,7 +6,7 @@ TagCloud::Application.routes.draw do
   match '/logout', to: 'user_sessions#logout'
 
   resources :tags, only: [:index, :new, :create, :show]
-  resources :mapped_values, only: [:new, :create]
+  resources :mapped_values, only: [:new, :create, :destroy]
   resources :user_sessions, only: [:index, :create]
 
   namespace :api do
