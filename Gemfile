@@ -21,6 +21,7 @@ gem 'strong_parameters'
 group :development do
   gem 'foreman'
   gem 'better_errors'
+  gem 'launchy'
 end
 
 group :development, :test do

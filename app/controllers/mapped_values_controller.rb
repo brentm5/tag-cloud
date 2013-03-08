@@ -13,4 +13,14 @@ class MappedValuesController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    mapped_value = MappedValue.find_by_id(params[:id])
+    tag = mapped_value.tag
+
+    mapped_value.destroy
+
+    flash[:notice] = 'Successfully deleted value'
+    redirect_to tag_path(tag)
+  end
 end

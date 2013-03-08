@@ -5,6 +5,7 @@
     <tr>
       <th>#</th>
       <th>Value</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
       <tr>
         <td><%= i %></td>
         <td><%= mapped_value.value %></td>
+        <td><%= link_to 'Delete Value', mapped_value_path(mapped_value), method: :delete, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
