@@ -1,0 +1,9 @@
+<h2>Edit Value</h2>
+<%= simple_form_for @mapped_value, html: { class: 'form-horizontal'} do |form| %>
+  <%= form.association :tag, label: 'Tag' %>
+  <%= form.input :value, label: 'Value' %>
+  <div class="form-actions">
+    <%= form.submit 'Save Value', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', tags_path, class: 'btn btn-danger' %>
+  </div>
+<% end %>
