@@ -23,13 +23,43 @@ feature 'A mapped Value' do
     verify_mapped_value_deleted(mapped_value)
   end
 
-  scenario 'should validate input' do
+  scenario 'should be able to be edited' do
+    login_user_via_github
+    mapped_value = create_mapped_value
+    navigate_to_tag(mapped_value.tag)
+    edit_mapped_value('Here is my new value')
+    verify_value_was_edited('Here is my new value')
+  end
+
+  scenario 'should validate input when created' do
     login_user_via_github
     navigate_to_add_value
     add_an_incomplete_mapped_value
     verify_current_page_is_add_form
     verify_page_has_error
   end
+
+  scenario 'should validate input when updated' do
+    login_user_via_github
+    mapped_value = create_mapped_value
+    navigate_to_tag(mapped_value.tag)
+    edit_mapped_value('')
+    verify_page_has_error
+  end
+end
+
+def edit_mapped_value(new_value)
+  click_link 'Edit'
+  page.should have_content 'Edit Value'
+  fill_in 'Value', with: new_value
+  click_button 'Save Value'
+end
+
+def verify_value_was_edited(new_value)
+  within 'div.alert' do
+    page.should have_content 'Value has been updated'
+  end
+  page.should have_content new_value
 end
 
 def navigate_to_tag(tag)
