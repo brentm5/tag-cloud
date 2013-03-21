@@ -43,7 +43,7 @@ feature 'A mapped Value' do
     login_user_via_github
     mapped_value = create_mapped_value
     navigate_to_tag(mapped_value.tag)
-    edit_mapped_value('')
+    enter_invalid_data
     verify_page_has_error
   end
 end
@@ -60,6 +60,10 @@ def verify_value_was_edited(new_value)
     page.should have_content 'Value has been updated'
   end
   page.should have_content new_value
+end
+
+def enter_invalid_data
+  edit_mapped_value('')
 end
 
 def navigate_to_tag(tag)

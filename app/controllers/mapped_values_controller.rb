@@ -5,7 +5,7 @@ class MappedValuesController < ApplicationController
   end
 
   def edit
-    @mapped_value = MappedValue.find_by_id(params[:id])
+    @mapped_value = find_mapped_value
   end
 
   def create
@@ -19,7 +19,7 @@ class MappedValuesController < ApplicationController
   end
 
   def update
-    @mapped_value = MappedValue.find_by_id(params[:id])
+    @mapped_value = find_mapped_value
     if @mapped_value.update_attributes(mapped_value_params)
       flash[:notice] = 'Value has been updated'
       redirect_to @mapped_value.tag
@@ -29,7 +29,7 @@ class MappedValuesController < ApplicationController
   end
 
   def destroy
-    mapped_value = MappedValue.find_by_id(params[:id])
+    mapped_value = find_mapped_value
     tag = mapped_value.tag
 
     mapped_value.destroy
@@ -39,6 +39,10 @@ class MappedValuesController < ApplicationController
   end
 
   private
+
+  def find_mapped_value
+    MappedValue.find_by_id(params[:id])
+  end
 
   def mapped_value_params
     params.require(:mapped_value).permit(:value, :tag_id)
