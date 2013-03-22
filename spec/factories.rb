@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :tag do
     name { |n| "tag-#{n}" }
+    description 'Here is my really long description for my tag'
   end
 
   factory :mapped_value do

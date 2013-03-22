@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303062712) do
+ActiveRecord::Schema.define(:version => 20130322031239) do
 
   create_table "mapped_values", :force => true do |t|
     t.text     "value"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(:version => 20130303062712) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.text     "description", :default => ""
   end
 
   create_table "users", :force => true do |t|

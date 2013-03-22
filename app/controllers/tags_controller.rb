@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(params.require(:tag).permit(:name))
+    @tag = Tag.new(tag_params)
     if @tag.save
       flash[:notice] = "Added tag #{@tag.name}"
       redirect_to tags_path
@@ -21,5 +21,11 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find_by_id(params[:id])
+  end
+
+  private
+
+  def tag_params
+    params.require(:tag).permit(:name, :description)
   end
 end
