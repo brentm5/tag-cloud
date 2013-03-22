@@ -56,6 +56,7 @@ end
 
 def verify_tag_page(tag)
   page.should have_selector('h2', text: tag.name)
+  page.should have_selector('p', text: tag.description)
   within 'table.table' do
     tag.mapped_values.each do |mapped_value|
       page.should have_content mapped_value.value
@@ -74,6 +75,7 @@ end
 def add_a_tag
   click_link 'Add Tag'
   fill_in 'Tag Name', with: 'first-tag'
+  fill_in 'Description', with: 'Here is my long description describing the tag'
   click_button 'Add Tag'
 end
 

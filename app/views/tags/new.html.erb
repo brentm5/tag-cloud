@@ -1,6 +1,7 @@
 <h2>Add a new Tag</h2>
 <%= simple_form_for @tag, html: { class: 'form-horizontal'} do |form| %>
   <%= form.input :name, label: 'Tag Name' %>
+  <%= form.input :description, label: 'Description' %>
   <div class="form-actions">
     <%= form.submit 'Add Tag', class: 'btn btn-primary' %>
     <%= link_to 'Cancel', tags_path, class: 'btn btn-danger' %>

@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(params.require(:tag).permit(:name))
+    @tag = Tag.new(params.require(:tag).permit(:name, :description))
     if @tag.save
       flash[:notice] = "Added tag #{@tag.name}"
       redirect_to tags_path
