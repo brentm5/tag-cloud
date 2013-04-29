@@ -1,9 +1,9 @@
-<h2>Add a new Tag</h2>
+<h2>Update Tag</h2>
 <%= simple_form_for @tag, html: { class: 'form-horizontal'} do |form| %>
   <%= form.input :name %>
   <%= form.input :description %>
   <div class="form-actions">
-    <%= form.submit 'Add Tag', class: 'btn btn-primary' %>
+    <%= form.submit 'Update Tag', class: 'btn btn-primary' %>
     <%= link_to 'Cancel', tags_path, class: 'btn btn-danger' %>
   </div>
 <% end %>

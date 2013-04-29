@@ -9,6 +9,10 @@ class TagsController < ApplicationController
     @tag = Tag.new
   end
 
+  def edit
+    @tag = Tag.find_by_id(params[:id])
+  end
+
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
@@ -16,6 +20,16 @@ class TagsController < ApplicationController
       redirect_to tags_path
     else
       render 'new'
+    end
+  end
+
+  def update
+    @tag = Tag.find_by_id(params[:id])
+    if @tag.update_attributes(tag_params)
+      flash[:notice] = 'Updated Tag'
+      redirect_to tags_path
+    else
+      render 'edit'
     end
   end
 
