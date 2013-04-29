@@ -13,6 +13,20 @@ feature 'Tags' do
     verify_tag_was_added
   end
 
+  scenario 'should be able to be edited' do
+    login_user_via_github
+    create_tag
+    navigate_to_tags_index
+    edit_tag
+    fill_in_tag(invalid_tag)
+    update_tag
+    verify_invalid_tag
+    tag = valid_tag
+    fill_in_tag(tag)
+    update_tag
+    verify_tag_updated(tag)
+  end
+
   scenario 'can be shown in a list' do
     login_user_via_github
     tags = create_tags_with_mapped_values(3)
@@ -26,6 +40,22 @@ feature 'Tags' do
     navigate_to_tag(tag)
     verify_tag_page(tag)
   end
+end
+
+def invalid_tag
+  build(:tag, name: '')
+end
+
+def valid_tag
+  build(:tag)
+end
+
+def edit_tag
+  click_link 'Edit'
+end
+
+def update_tag
+  click_button 'Update Tag'
 end
 
 def create_tags_with_mapped_values(tag_count = 2, mapped_value_count = 2)
@@ -74,9 +104,23 @@ end
 
 def add_a_tag
   click_link 'Add Tag'
-  fill_in 'Tag Name', with: 'first-tag'
-  fill_in 'Description', with: 'Here is my long description describing the tag'
+  tag = build(:tag, name: 'first-tag', description: 'Here is my description')
+  fill_in_tag(tag)
   click_button 'Add Tag'
+end
+
+def fill_in_tag(tag)
+  fill_in 'Name', with: tag.name
+  fill_in 'Description', with: tag.description
+end
+
+def verify_tag_updated(tag)
+  page.should have_content tag.name
+  page.should have_content 'Updated Tag'
+end
+
+def verify_invalid_tag
+  page.should have_content "can't be blank"
 end
 
 def verify_tag_was_added

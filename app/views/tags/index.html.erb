@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +12,11 @@
         <td>
           <span class="badge badge-info"><%= tag.mapped_values.count %></span>
           <%= link_to tag.name, tag_path(tag) %>
+        </td>
+        <td>
+          <div class="pull-right">
+            <%= link_to 'Edit', edit_tag_path(tag), class: 'btn btn-primary btn-small' %>
+          </div>
         </td>
       </tr>
     <% end %>
