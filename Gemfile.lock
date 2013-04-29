@@ -29,6 +29,10 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
+    airbrake (3.1.8)
+      activesupport
+      builder
+      json
     arel (3.0.2)
     better_errors (0.7.0)
       coderay (>= 1.0.0)
@@ -228,6 +232,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake (= 3.1.8)
   better_errors
   bootstrap-sass (~> 2.3.0.1)
   bourne

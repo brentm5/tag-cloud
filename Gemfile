@@ -9,6 +9,7 @@ group :assets do
 end
 
 gem 'coveralls', require: false
+gem 'airbrake', '3.1.8'
 gem 'thin'
 gem 'omniauth'
 gem 'omniauth-github'

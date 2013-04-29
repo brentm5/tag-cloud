@@ -23,7 +23,7 @@
       <%= render 'layouts/flashes' %>
       <%= yield %>
     </div>
-
+    <%= airbrake_javascript_notifier %>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
