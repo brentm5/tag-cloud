@@ -1,4 +1,4 @@
 class MappedValue < ActiveRecord::Base
-  validates :value, :tag, presence: :true
+  validates :value, presence: :true
   belongs_to :tag
 end

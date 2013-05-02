@@ -10,6 +10,7 @@ TagCloud::Application.routes.draw do
   resources :user_sessions, only: [:index, :create]
 
   namespace :api do
+    resources :mapped_values, only: [:create]
     resources :random_mapped_value, only: [:index]
   end
 end
