@@ -8,10 +8,10 @@ feature 'A mapped Value' do
 
   scenario 'should be able to be created' do
     login_user_via_github
-    create_tag
+    tag = create_tag
     navigate_to_add_value
-    add_a_mapped_value
-    verify_value_was_added
+    add_a_mapped_value(tag)
+    verify_value_was_added(tag)
     verify_current_page_is_add_form
   end
 
@@ -91,7 +91,7 @@ def create_mapped_value
 end
 
 def create_tag
-  create(:tag, name: 'tag-1')
+  create(:tag)
 end
 
 def navigate_to_add_value
@@ -99,8 +99,8 @@ def navigate_to_add_value
   click_link 'New Value'
 end
 
-def add_a_mapped_value
-  select 'tag-1', from: 'Tag'
+def add_a_mapped_value(tag)
+  select tag.name, from: 'Tag' if tag
   fill_in 'Value', with: 'My Value'
   click_button 'Add Value'
 end
@@ -113,9 +113,9 @@ def verify_page_has_error
   page.should have_content 'can\'t be blank'
 end
 
-def verify_value_was_added
+def verify_value_was_added(tag)
   within 'div.alert' do
-    page.should have_content 'You have added a new value for tag-1'
+    page.should have_content "You have added a new value for #{tag.name}"
   end
 end
 
