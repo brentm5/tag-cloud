@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Api::RandomMappedValueController, type: :controller do
   context 'Successfuly requests' do
     it 'can get a random mapped value with a tag' do
-      mapped_value = valid_mapped_value
+      mapped_value = create_valid_mapped_value
       get :index, token: valid_token, tag: mapped_value.tag.name
 
       response.body.should eql mapped_value.to_json
@@ -18,7 +18,7 @@ describe Api::RandomMappedValueController, type: :controller do
     end
 
     it 'should respond with an empty object if the tag has no values associated' do
-      get :index, token: valid_token, tag: valid_tag.name
+      get :index, token: valid_token, tag: create_valid_tag.name
 
       response.body.should eql '{}'
       response.status.should eql 200
@@ -27,7 +27,7 @@ describe Api::RandomMappedValueController, type: :controller do
 
   context 'Invalid Requests' do
     it 'does not pass through a token parameter' do
-      get :index, tag: valid_mapped_value.tag.name
+      get :index, tag: create_valid_mapped_value.tag.name
 
       response.status.should eql 401
     end
@@ -46,10 +46,10 @@ describe Api::RandomMappedValueController, type: :controller do
   end
 end
 
-def valid_tag
+def create_valid_tag
   create(:tag)
 end
 
-def valid_mapped_value
+def create_valid_mapped_value
   create(:mapped_value)
 end
