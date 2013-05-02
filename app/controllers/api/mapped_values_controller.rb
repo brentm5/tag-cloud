@@ -1,12 +1,10 @@
 class Api::MappedValuesController < Api::BaseApiController
-  before_filter :ensure_parameters
-
   def create
     mapped_value = build_mapped_value
     if mapped_value.save
       render json: {status:"OK"}, status: 200
     else
-      render json: {error:"Something went terribly wrong"}, status: 400
+      render json: {error: mapped_value.errors}, status: 400
     end
   end
 end
@@ -31,8 +29,3 @@ def mapped_value_parameters
   params.permit(:value)
 end
 
-def ensure_parameters
-  unless params[:value]
-    render json: {error: "You are missing the 'value' parameter"}, status: 400
-  end
-end
