@@ -1,27 +1,24 @@
 require 'spec_helper'
 
 describe Api::RandomMappedValueController, type: :controller do
-  let(:token) { ENV['API_TOKEN'] }
-  let(:tag) { create :tag }
-  let(:mapped_value) { create :mapped_value }
-
   context 'Successfuly requests' do
     it 'can get a random mapped value with a tag' do
-      get :index, token: token, tag: mapped_value.tag.name
+      mapped_value = create_valid_mapped_value
+      get :index, token: valid_token, tag: mapped_value.tag.name
 
       response.body.should eql mapped_value.to_json
       response.status.should eql 200
     end
 
     it 'should respond with an empty object if not tags are found' do
-      get :index, token: token, tag: 'this-does-not-exist'
+      get :index, token: valid_token, tag: 'this-does-not-exist'
 
       response.body.should eql '{}'
       response.status.should eql 200
     end
 
     it 'should respond with an empty object if the tag has no values associated' do
-      get :index, token: token, tag: tag.name
+      get :index, token: valid_token, tag: create_valid_tag.name
 
       response.body.should eql '{}'
       response.status.should eql 200
@@ -30,22 +27,29 @@ describe Api::RandomMappedValueController, type: :controller do
 
   context 'Invalid Requests' do
     it 'does not pass through a token parameter' do
-      get :index, tag: mapped_value.tag.name
+      get :index, tag: create_valid_mapped_value.tag.name
 
       response.status.should eql 401
     end
 
     it 'does not pass through a tag parameter' do
-      get :index, token: token
+      get :index, token: valid_token
 
       response.status.should eql 400
     end
 
     it 'does not have an API_TOKEN set' do
-      ENV['API_TOKEN'] = nil
-      get :index, token: token
+      get :index, token: invalid_token
 
       response.status.should eql 401
     end
   end
+end
+
+def create_valid_tag
+  create(:tag)
+end
+
+def create_valid_mapped_value
+  create(:mapped_value)
 end
