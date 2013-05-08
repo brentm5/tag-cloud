@@ -19,6 +19,12 @@ gem 'simple_form', '~> 2.1.0'
 gem 'jquery-rails'
 gem 'strong_parameters'
 
+
+group :production do
+  gem 'memcachier'
+  gem 'dalli'
+end
+
 group :development do
   gem 'foreman'
   gem 'better_errors'
