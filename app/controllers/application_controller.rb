@@ -14,7 +14,14 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id])
+    @current_user ||= get_current_user
   end
 
+  def get_current_user
+    if session[:user_id]
+      Rails.cache.fetch("CurrentUser/#{session[:user_id]}") do
+        User.find_by_id(session[:user_id])
+      end
+    end
+  end
 end
