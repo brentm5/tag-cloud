@@ -2,8 +2,9 @@ class Api::RandomMappedValueController < Api::BaseApiController
   before_filter :ensure_tag_parameter
 
   def index
-    if mapped_values
-      render json: mapped_values.sample
+    if random_mapped_value
+      render json: random_mapped_value
+      increment_return_count
     else
       render json: {}
     end
@@ -18,6 +19,19 @@ class Api::RandomMappedValueController < Api::BaseApiController
 
   def tag
     @tag ||= Tag.find_by_name(params[:tag])
+  end
+
+  def increment_return_count
+    if random_mapped_value
+      random_mapped_value.return_count += 1
+      random_mapped_value.save
+    end
+  end
+
+  def random_mapped_value
+    if mapped_values
+      @random_mapped_value ||= mapped_values.sample
+    end
   end
 
   def mapped_values
