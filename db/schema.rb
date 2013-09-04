@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322031239) do
+ActiveRecord::Schema.define(:version => 20130904184405) do
 
   create_table "mapped_values", :force => true do |t|
     t.text     "value"
     t.integer  "tag_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "return_count", :default => 0
   end
 
   add_index "mapped_values", ["tag_id"], :name => "index_mapped_values_on_tag_id"

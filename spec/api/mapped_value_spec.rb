@@ -22,7 +22,16 @@ describe Api::RandomMappedValueController, type: :controller do
 
       response.body.should eql '{}'
       response.status.should eql 200
-    end 
+    end
+
+    it 'should update the total value return count' do
+      mapped_value = create_valid_mapped_value
+      get :index, token: valid_token, tag: mapped_value.tag.name
+      mapped_value.reload
+
+      response.status.should eql 200
+      mapped_value.return_count.should eql 1
+    end
   end
 
   context 'Invalid Requests' do
